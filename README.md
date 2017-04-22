@@ -28,7 +28,7 @@ Time      | Session
 
 ## Sponsors
 * [Microsoft](http://microsoft.com)
-* [Fish Angler](http://fishangler.net)
+* [FishAngler](http://fishangler.net)
 * [Opsgility](https://www.opsgility.com/)
 * [MyGet](http:/myget.org)
 * [SentryOne](https://www.sentryone.com/)
