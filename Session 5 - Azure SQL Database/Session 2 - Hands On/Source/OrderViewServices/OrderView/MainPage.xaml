@@ -1,0 +1,98 @@
+﻿<Page
+    x:Class="OrderView.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OrderView"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+	<Page.Resources>
+		<Style x:Key="SmallerLabelStyle" TargetType="TextBlock">
+			<Setter Property="FontSize" Value="12"/>
+			<Setter Property="FontWeight" Value="Light"/>
+		</Style>
+	</Page.Resources>
+
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+
+		<ComboBox VerticalAlignment="Center" HorizontalAlignment="Left" ItemsSource="{Binding Salespersons}" SelectedItem="{Binding SelectedSalesperson, Mode=TwoWay}" SelectionChanged="OnEmployeeChanged" Width="240" Margin="40,40,40,0">
+			<ComboBox.Header>
+				<TextBlock Margin="0,0,0,-5" FontSize="12" FontWeight="Light" Text="SELECT SALESPERSON"/>
+			</ComboBox.Header>
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock FontWeight="Light" Text="{Binding Label}" />
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
+		<ScrollViewer Grid.Row="1" Margin="40">
+
+			<GridView ItemsSource="{Binding CurrentOrders}">
+				<GridView.ItemTemplate>
+					<DataTemplate>
+						<Grid Margin="10" Width="300" Tapped="OnShowCustomer">
+							<FlyoutBase.AttachedFlyout>
+								<Flyout Placement="Top" >
+									<Grid>
+										<StackPanel Margin="10">
+											<TextBlock FontWeight="SemiBold" Text="{Binding Customer.CompanyName}" />
+											<TextBlock Style="{StaticResource SmallerLabelStyle}" Text="{Binding Customer.Address}" />
+											<TextBlock Style="{StaticResource SmallerLabelStyle}" Text="{Binding Customer.City}" />
+											<TextBlock Style="{StaticResource SmallerLabelStyle}" Text="{Binding Customer.PostalCode}" />
+											<TextBlock Style="{StaticResource SmallerLabelStyle}" Text="{Binding Customer.Country}" />
+											<TextBlock Style="{StaticResource SmallerLabelStyle}" Text="{Binding Customer.Phone}" />
+											<TextBlock Style="{StaticResource SmallerLabelStyle}" Text="{Binding Customer.Fax}" />
+										</StackPanel>
+									</Grid>
+								</Flyout>
+							</FlyoutBase.AttachedFlyout>
+
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto"/>
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+
+							<TextBlock Margin="0,0,10,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="36" Text="" FontFamily="{ThemeResource SymbolThemeFontFamily}"/>
+
+							<StackPanel Grid.Column="1">
+
+								<TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="CUSTOMER"/>
+								<TextBlock FontWeight="SemiBold" Text="{Binding Customer.CompanyName}"/>
+
+								<TextBlock Margin="0,10,0,0" Style="{ThemeResource CaptionTextBlockStyle}" Text="SALESPERSON"/>
+								<TextBlock FontWeight="SemiBold" Text="{Binding EmployeeName}"/>
+
+								<TextBlock Margin="0,10,0,0" Style="{ThemeResource CaptionTextBlockStyle}" Text="ORDER NO"/>
+								<TextBlock FontWeight="SemiBold" Text="{Binding OrderId}"/>
+
+								<TextBlock Margin="0,10,0,0" Style="{ThemeResource CaptionTextBlockStyle}" Text="ORDER DATE"/>
+								<TextBlock FontWeight="SemiBold" Text="{Binding OrderDate}"/>
+
+								<TextBlock Margin="0,10,0,0" Style="{ThemeResource CaptionTextBlockStyle}">
+                        <Run Text="TOTAL ITEMS"/>
+                        <Run FontWeight="SemiBold" Text="{Binding OrderDetails.Count}"/>
+								</TextBlock>
+
+							</StackPanel>
+
+						</Grid>
+					</DataTemplate>
+				</GridView.ItemTemplate>
+				<GridView.ItemsPanel>
+					<ItemsPanelTemplate>
+						<ItemsWrapGrid Orientation="Horizontal"/>
+					</ItemsPanelTemplate>
+				</GridView.ItemsPanel>
+			</GridView>
+		</ScrollViewer>
+
+		<ProgressRing Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="160" Height="160" IsActive="{Binding IsLoading}" IsEnabled="{Binding IsLoading}"/>
+
+	</Grid>
+</Page>
