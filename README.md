@@ -12,12 +12,12 @@ We will have Breakfast and Lunch provided. A big thanks to [Fish Angler](http://
 Time      | Session
 ----------|----------
 9:00 AM | Welcome and Setup 
-9:30 AM | Intro to Azure - Joe Raio 
-10:45 AM | Azure App Service - Cecil Phillip 
+9:30 AM | Intro to Azure - Joe Raio ([@joescars](https://twitter.com/joescars))
+10:45 AM | Azure App Service - Cecil Phillip ([@cecilphillip](https://twitter.com/cecilphillip))
 12:00 PM | Lunch 
-1:00 PM | Azure Document DB - Jonas Stawaski 
-2:00 PM | Azure Functions - Richie Rump 
-3:00 PM | Azure SQL Database - Will Tartak 
+1:00 PM | Azure Document DB - Jonas Stawaski ([@jstawski](https://twitter.com/jstawski))
+2:00 PM | Azure Functions - Richie Rump ([@Jorriss](https://twitter.com/Jorriss))
+3:00 PM | Azure SQL Database - Will Tartak ([@WillTartak](https://twitter.com/WillTartak))
 4:00 PM | Wrap up and giveaways
 
 ## Tools
